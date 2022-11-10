@@ -60,26 +60,17 @@ let users = [
 
 //Вивести масив телефонних номерів користувачів, у яких баланс більше 2000 доларів.
 
-const correctBalance = users.map((user, index) => {
-    return parseFloat(user.balance.slice(1).split(',').join(""));
-});
-console.log(correctBalance);
-
-const newUsers = users.map((user) => {
-   
-
-})
-/*const usersPhoneNumbers = users.reduce((accum, user, index) => {
-    if (users[index].balance.slice(1).split(',').join("") >= 2000) {
+const usersPhoneNumbers = users.reduce((accum, user) => {
+    if (+user.balance.replace("$", "").replace(",", "") > 2000) {
         accum.push(user.phone);
     }
     return accum;
 }, []);
-console.log(usersPhoneNumbers);*/
+console.log(usersPhoneNumbers);
 
 //знайти суму всіх балансів користувачів
 
-/*const sumOfBalances = correctBalance.reduce((accum, balance) => {
-    return accum + balance;
+const sumUsersBalances = users.reduce((accum, user) => {
+    return accum + +user.balance.replace("$", "").replace(",", "");
 }, 0);
-console.log(`Сума всіх балансів користувачів: ${sumOfBalances.toFixed(2)}`);*/
+console.log(`Сума всіх балансів користувачів: $${sumUsersBalances.toFixed(2)}`);
